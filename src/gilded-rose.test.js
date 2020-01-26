@@ -1,7 +1,11 @@
 import fs from 'fs'
 
 import { GildedRose } from './gilded-rose'
-import { Item } from './item'
+import { Item } from './items/item'
+import { AgedBrie } from './items/agedBrie'
+import { Concert } from './items/concert'
+import { Sulfuras } from './items/sulfuras'
+import { Conjured } from './items/Conjured'
 
 describe('GildedRoseTest', () => {
   it('foo', () => {
@@ -19,16 +23,16 @@ describe('GildedRoseTest', () => {
 it('safety net test', () => {
   const items = [
     new Item('+5 Dexterity Vest', 10, 20), //
-    new Item('Aged Brie', 2, 0), //
+    new AgedBrie(2, 0), //
     new Item('Elixir of the Mongoose', 5, 7), //
-    new Item('Sulfuras, Hand of Ragnaros', 0, 80), //
-    new Item('Sulfuras, Hand of Ragnaros', -1, 80),
-    new Item('Backstage passes to a TAFKAL80ETC concert', 15, 20),
-    new Item('Backstage passes to a TAFKAL80ETC concert', 10, 49),
-    new Item('Backstage passes to a TAFKAL80ETC concert', 5, 49),
-    new Item('Backstage passes to a TAFKAL80ETC concert', 1, 20),
-    // this conjured item does not work properly yet
-    new Item('Conjured Mana Cake', 3, 6),
+    new Sulfuras(0, 80), //
+    new Sulfuras(-1, 80),
+    new Concert(15, 20),
+    new Concert(10, 49),
+    new Concert(5, 49),
+    new Concert(1, 20),
+    new Conjured('Conjured Mana Cake', 3, 6),
+    new Conjured('Conjured Mana Drink', 0, 4),
   ]
 
   const app = new GildedRose(items)
@@ -36,7 +40,7 @@ it('safety net test', () => {
   const result = []
 
   result.push('OMGHAI')
-  for (let i = 0; i < days; i++) {
+  for (let i = 0; i < days; i = i + 1) {
     result.push(`-------- day ${i} --------`)
     result.push('name, sellIn, quality')
     for (const item of items) {

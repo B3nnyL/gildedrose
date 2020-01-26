@@ -20,7 +20,7 @@ const days = 3
 const result = []
 
 result.push('OMGHAI')
-for (let i = 0; i < days; i++) {
+for (let i = 0; i < days; i = i + 1) {
   result.push(`-------- day ${i} --------`)
   result.push('name, sellIn, quality')
   for (const item of items) {
