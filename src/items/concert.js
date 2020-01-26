@@ -1,4 +1,5 @@
 import { Item } from './item'
+import { CONCERT_PHASE_1, CONCERT_PHASE_2, CONCERT_PHASE_3 } from './utils'
 
 export class Concert extends Item {
   constructor(sell_in, quality) {
@@ -13,14 +14,14 @@ export class Concert extends Item {
 
   _calculationOnSellIn(quality) {
     if (this.sell_in < 11 && this.sell_in > 6) {
-      return quality + 2
+      return quality + CONCERT_PHASE_2
     }
     if (this.sell_in < 6 && this.sell_in >= 0) {
-      return quality + 3
+      return quality + CONCERT_PHASE_3
     }
     if (this.sell_in < 0) {
       return 0
     }
-    return quality + 1
+    return quality + CONCERT_PHASE_1
   }
 }

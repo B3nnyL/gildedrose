@@ -1,4 +1,5 @@
 import { Item } from './item'
+import { BRIE_RATE } from './utils'
 
 export class AgedBrie extends Item {
   constructor(sell_in, quality) {
@@ -6,6 +7,6 @@ export class AgedBrie extends Item {
   }
 
   update_quality() {
-    this.quality = this.quality + 1
+    this.quality = this.quality + BRIE_RATE
   }
 }
